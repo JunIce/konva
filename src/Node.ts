@@ -198,7 +198,8 @@ export abstract class Node<Config extends NodeConfig = NodeConfig> {
     // for transform the cache can be NOT empty
     // but we still need to recalculate it if it is dirty
     const isTransform = attr === TRANSFORM || attr === ABSOLUTE_TRANSFORM;
-    const invalid = cache === undefined || (isTransform && cache.dirty === true);
+    const invalid =
+      cache === undefined || (isTransform && cache.dirty === true);
 
     // if not cached, we need to set it using the private getter method.
     if (invalid) {
@@ -2379,7 +2380,7 @@ export abstract class Node<Config extends NodeConfig = NodeConfig> {
 
     const topListeners = this._getProtoListeners(eventType);
     if (topListeners) {
-      for (var i = 0; i < topListeners.length; i++) {
+      for (let i = 0; i < topListeners.length; i++) {
         topListeners[i].handler.call(this, evt);
       }
     }
@@ -2388,7 +2389,7 @@ export abstract class Node<Config extends NodeConfig = NodeConfig> {
     // because events can be added/removed while firing
     const selfListeners = this.eventListeners[eventType];
     if (selfListeners) {
-      for (var i = 0; i < selfListeners.length; i++) {
+      for (let i = 0; i < selfListeners.length; i++) {
         selfListeners[i].handler.call(this, evt);
       }
     }
